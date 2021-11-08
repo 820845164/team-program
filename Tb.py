@@ -12,14 +12,14 @@ import bs4
 # requests获取url的html代码信息
 import requests
 import random
-
+from fake_useragent import UserAgent
 
 # 爬取的是淘宝网的书包，爬取价格和商品名称
 # headers是登录搜索书包后复制了search文件中的user-agent和cookie
 def getHtml(url):
-    header = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52',
-        'cookie': '_samesite_flag_=true; cookie2=1b808fb9524c70b2bd8f4d145a1ee4b6; t=bb63505d365ff069865cb7b9573b5e7a; _tb_token_=0e438f03e37e; cna=NrTRGWvx/UQCAXWIS/SNmCDB; xlly_s=1; sgcookie=E100OmZDhbxpQ0O6EniyA/ltXMtOSo3ySDf/6S7pbiPdXk+FxmTqLKn2csnSktuvSzLg6xVKd1k80K59GdX3j9l0p8QGd22XQpzcO5NJjL1DIB0=; unb=2206746303967; uc3=id2=UUphzOV1+duyw2pjaw==&lg2=UtASsssmOIJ0bQ==&nk2=F5RCYrtyy7Pc4w==&vt3=F8dCujdyOKg/swzriRA=; csg=db280683; lgc=tb77180794; cancelledSubSites=empty; cookie17=UUphzOV1+duyw2pjaw==; dnk=tb77180794; skt=6e6e317909008c2f; existShop=MTYzMjI5MDM5MQ==; uc4=nk4=0@FY4JjC8oJA7zDSZZlSbcPAT/jm5h&id4=0@U2grF866Yrx7jBvupg7yFxSgqAnc385D; tracknick=tb77180794; _cc_=U+GCWk/7og==; _l_g_=Ug==; sg=474; _nk_=tb77180794; cookie1=BdXcAWnRzxrn5g2f7DHA2UDsk8+8YP8cNNbWKu+1ncs=; enc=vP4gxYVvdXtoe6QPN4ExL8t0Sbdr1SHpclpnKktYvBpksn6j+j7r3HsZJocA8vDNZwO52Mmd1tur9oIi5rssG2tKpRBoUHrvxjWzj0nS7+E=; hng=CN|zh-CN|CNY|156; thw=cn; mt=ci=5_1; uc1=cookie16=WqG3DMC9UpAPBHGz5QBErFxlCA==&existShop=false&cookie21=V32FPkk/gPzW&cookie14=Uoe3dYNQ1AK3Nw==&pas=0&cookie15=UIHiLt3xD8xYTw==; JSESSIONID=9B02DC25A3E39CB391CE53DA594DEF26; isg=BAsLXoqn7phFyzLMqw8bTpegmq_1oB8iYwOwQH0I58qhnCv-BXCvcqk-dpxyp3ca; l=eBESH6LqgRojJEO9BOfanurza77OSIRYYuPzaNbMiOCPOwfB5rAfW6FNai86C3GVh6AvR35okuQ6BeYBqQAonxv92j-la_kmn; tfstk=cDj5BwNHdbc7ok4E4TwqT6sb8IxdwiP6nPdRFwixOVY6oC1DWcR1JMCqiFeHh', }
+     ua=UserAgent()
+     header = {'user-agent':ua.random,
+               'cookie':'_samesite_flag_=true; cookie2=1b808fb9524c70b2bd8f4d145a1ee4b6; t=bb63505d365ff069865cb7b9573b5e7a; _tb_token_=0e438f03e37e; cna=NrTRGWvx/UQCAXWIS/SNmCDB; xlly_s=1; sgcookie=E100OmZDhbxpQ0O6EniyA/ltXMtOSo3ySDf/6S7pbiPdXk+FxmTqLKn2csnSktuvSzLg6xVKd1k80K59GdX3j9l0p8QGd22XQpzcO5NJjL1DIB0=; unb=2206746303967; uc3=id2=UUphzOV1+duyw2pjaw==&lg2=UtASsssmOIJ0bQ==&nk2=F5RCYrtyy7Pc4w==&vt3=F8dCujdyOKg/swzriRA=; csg=db280683; lgc=tb77180794; cancelledSubSites=empty; cookie17=UUphzOV1+duyw2pjaw==; dnk=tb77180794; skt=6e6e317909008c2f; existShop=MTYzMjI5MDM5MQ==; uc4=nk4=0@FY4JjC8oJA7zDSZZlSbcPAT/jm5h&id4=0@U2grF866Yrx7jBvupg7yFxSgqAnc385D; tracknick=tb77180794; _cc_=U+GCWk/7og==; _l_g_=Ug==; sg=474; _nk_=tb77180794; cookie1=BdXcAWnRzxrn5g2f7DHA2UDsk8+8YP8cNNbWKu+1ncs=; enc=vP4gxYVvdXtoe6QPN4ExL8t0Sbdr1SHpclpnKktYvBpksn6j+j7r3HsZJocA8vDNZwO52Mmd1tur9oIi5rssG2tKpRBoUHrvxjWzj0nS7+E=; hng=CN|zh-CN|CNY|156; thw=cn; mt=ci=5_1; uc1=cookie16=WqG3DMC9UpAPBHGz5QBErFxlCA==&existShop=false&cookie21=V32FPkk/gPzW&cookie14=Uoe3dYNQ1AK3Nw==&pas=0&cookie15=UIHiLt3xD8xYTw==; JSESSIONID=9B02DC25A3E39CB391CE53DA594DEF26; isg=BAsLXoqn7phFyzLMqw8bTpegmq_1oB8iYwOwQH0I58qhnCv-BXCvcqk-dpxyp3ca; l=eBESH6LqgRojJEO9BOfanurza77OSIRYYuPzaNbMiOCPOwfB5rAfW6FNai86C3GVh6AvR35okuQ6BeYBqQAonxv92j-la_kmn; tfstk=cDj5BwNHdbc7ok4E4TwqT6sb8IxdwiP6nPdRFwixOVY6oC1DWcR1JMCqiFeHh',}
 
     # print(ua.random)
     r = requests.get(url, headers=header, timeout=120)
