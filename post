@@ -1,0 +1,12 @@
+import requests
+import json
+import random
+
+with open('D:.json','r',encoding='utf8')as fp:
+    json_data = json.loads(fp.read())
+    headers = {'Content-Type': 'application/json'}
+    for i in range(0,len(json_data)):
+        list = []
+        list.append(json_data[i])
+        res = requests.post(url="http://47.111.186.107:9000/ruangong/drug",headers = headers,data = json.dumps(list))
+        print(res.json())
