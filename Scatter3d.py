@@ -48,7 +48,7 @@ field_indices = {
     "water": 11,
 }
 
-# 配置 config
+#### 配置 config
 config_xAxis3D = "protein"
 config_yAxis3D = "fiber"
 config_zAxis3D = "sodium"
