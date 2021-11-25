@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.options import Options
 
 
 chrome_options = Options()
-# chrome_options.add_argument('--headless')
-# chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
 path =r'C:\Users\ChenBenYuan\AppData\Local\Google\Chrome\Application\chrome.exe'
 chrome_options.binary_location = path
 
